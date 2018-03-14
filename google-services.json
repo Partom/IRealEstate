@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "629638894695",
+    "firebase_url": "https://irealestate-1518792113059.firebaseio.com",
+    "project_id": "irealestate-1518792113059",
+    "storage_bucket": "irealestate-1518792113059.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:629638894695:android:25156b6015ef31c6",
+        "android_client_info": {
+          "package_name": "com.irealestateoregon.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "629638894695-hg5g8m6nicpridnkbjgleuu6a2vc9dim.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCxu6AlhakmAKCm-0sPS5mHQDVJnnoZq34"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

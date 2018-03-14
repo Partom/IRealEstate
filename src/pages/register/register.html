@@ -1,0 +1,50 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Register</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content class="login-content" padding>
+    <div class="login-box">
+
+        <form [formGroup]="signupForm" (submit)="verifyuser()">
+        <ion-row>
+          <ion-col>
+              <ion-list inset>
+                  <ion-item no-lines>
+                    <ion-input placeholder="First Name" type="text" [(ngModel)]="account.first_name"  formControlName="first_name"></ion-input>
+                  </ion-item>
+                  <ion-item no-lines>
+
+                      <ion-input placeholder="Last Name" type="text" [(ngModel)]="account.last_name"  formControlName="last_name"></ion-input>
+                    </ion-item>
+                  <ion-item no-lines>
+
+                    <ion-input placeholder="Email" type="email" [(ngModel)]="account.email" formControlName="email"></ion-input>
+                  </ion-item>
+                  <ion-item no-lines>
+
+                      <ion-input placeholder="Mobile" type="number" [(ngModel)]="account.mobile"  formControlName="mobile"></ion-input>
+                  </ion-item>
+                  <ion-item no-lines>
+                    <ion-input placeholder="Password" type="password" [(ngModel)]="account.password" formControlName="password"></ion-input>
+                  </ion-item>
+              </ion-list>
+          </ion-col>
+        </ion-row>
+          <ion-row>
+            <ion-col>
+              <div id="recaptcha-container"></div>
+            </ion-col>
+          </ion-row>
+        <ion-row>
+          <ion-col class="signup-col">
+              <button ion-button class="submit-btn" full type="submit" [disabled]="!signupForm.valid">SignUp</button>
+          </ion-col>
+        </ion-row>
+
+      </form>
+    </div>
+</ion-content>

@@ -1,0 +1,35 @@
+#welcome
+{
+    text-align: center;
+    background: url(../assets/imgs/welcome/background.png) no-repeat;
+    background-size: 100% 100%;
+    height: 100%;
+    overflow: hidden;
+    margin: 0px;
+    // width: 100%;
+    .text-wrapper{
+        height: 78% !important;
+        overflow: hidden; 
+        margin: 0px;   
+        .text{
+            top: 63%;
+            position: relative;
+            
+        }
+        
+    }
+    .button-wrapper{
+        height: auto;
+        text-align: center;
+        padding-top: 10px;
+        
+        button{
+            padding: 30px 35px;
+            background: #90dfaa;
+            font-size: 16px;
+            // border-radius: 3px; 
+            width: 50%;
+        }
+    }
+
+}

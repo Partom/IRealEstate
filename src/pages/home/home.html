@@ -1,14 +1,17 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
+  <ion-navbar hideBackButton>
+    <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Home</ion-title>
   </ion-navbar>
 </ion-header>
-
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+<ion-content>
+    <!-- <button ion-button full color="success" (click)="List()">List Page</button>
+    <button ion-button full color="success" (click)="fav()">Favorites</button> -->
+    <div #map id="map"></div>
+  <ion-fab right bottom>
+      <img src="./assets/imgs/home/list_button.png" class="listicon" alt="" (click)="List()">
+  </ion-fab>
 </ion-content>
+

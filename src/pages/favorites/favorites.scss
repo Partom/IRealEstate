@@ -1,0 +1,26 @@
+#list{
+    background: #90dfaa;
+    .image{
+        width: 100%;
+        height: auto;
+
+    }
+    
+    .listdisplay{
+        width: 100%;
+
+    }
+    .properties{
+        ion-card-content{
+            ion-card-title{
+                color: color($colors,text);
+                font-size: 1.7rem;
+            }
+            p{
+                font-size: 1rem;
+            }
+        }
+       
+    }
+    
+}

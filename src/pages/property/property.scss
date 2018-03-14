@@ -1,0 +1,57 @@
+.property-card{
+    .fav-icon{
+        position: absolute;
+        top: 21px;
+        right: 24px;
+        font-size: 2.8rem;
+        color: color($colors,light);
+        z-index: 10;
+
+    }
+    .fav-icon.success{
+        color: red;
+    }
+    ion-card-content{
+        padding: 0px 10px;
+        ion-card-title{
+            color: color($colors,text);
+            font-size: 1.4rem;
+        }
+        p{
+            font-size: 1.2rem;
+        }
+    }
+    .property-description-section{
+        p{
+            // overflow: scroll;
+            max-height: 160px;
+            font-size: 1.1rem;
+        }
+    }
+    .bottom-nav{
+        ion-label{
+            font-weight: bold;
+            font-size: 1rem;
+            margin: 0px;
+            span{
+                font-weight: normal;
+            }
+        }
+    }
+  .swiper-pagination-bullets{
+    bottom: 20px !important;
+  }
+  .swiper-pagination-bullet-active{
+    background-color: #ffffff;
+  }
+}
+.button-area{
+    position: relative;
+    /* top: 5px; */
+    width: 100%;
+    text-align: center;
+}
+.thumb-img{
+  width: 100% !important;
+}
+

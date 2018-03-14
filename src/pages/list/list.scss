@@ -1,0 +1,49 @@
+// $img-placeholder-background: url(../assets/imgs/list/property.png);
+$img-placeholder-background: #000000;
+#list{
+
+    background: #90dfaa;
+    .image{
+        width: 100%;
+        height: 300px;
+        width: 100%; height: 170px; object-fit: cover;overflow:hidden;
+    }
+
+    .listdisplay{
+        width: 100%;
+
+    }
+    .mapicon  {
+        width: 60px;
+    }
+    .properties{
+        ion-card-content{
+            padding: 0px 10px;
+
+
+
+            ion-card-title{
+                color: color($colors,text);
+                font-size: 1.4rem;
+            }
+            p{
+                font-size: 1.2rem;
+            }
+        }
+        .bottom-nav{
+            ion-label{
+                font-weight: bold;
+                font-size: 1rem;
+                margin: 0px;
+                span{
+                    font-weight: normal;
+                }
+            }
+        }
+    }
+    .filter-popup{
+        width: 80%;
+        $popover-ios-width: 80%
+    }
+
+}

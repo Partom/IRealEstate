@@ -1,0 +1,46 @@
+<!-- <ion-header>
+
+  <ion-navbar hideBackButton>
+     <ion-title>
+          Filters
+     </ion-title>
+  </ion-navbar>
+</ion-header> -->
+<ion-content>
+  <ion-list no-lines>
+      <ion-item-divider color="light">Price</ion-item-divider>
+    <ion-item>
+      <ion-range dualKnobs="true" pin="true" min='0' max='49500000' [(ngModel)]="price" color="text">
+      </ion-range>
+    </ion-item>
+    <ion-item-divider color="light">Area</ion-item-divider>
+    <ion-item>
+        <ion-range dualKnobs="true" pin="true" min='0' max='520' [(ngModel)]="area" color="text" debounce='700'>
+          </ion-range>
+    </ion-item>
+    <ion-item>
+        <ion-label color="text">Bedrooms</ion-label>
+        <ion-input type="number" [(ngModel)]="bedroom" placeholder="1" ></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label color="text">Bathrooms</ion-label>
+        <ion-input type="number" [(ngModel)]="bathroom" placeholder="1"></ion-input>
+    </ion-item>
+    <ion-item-divider color="light">Property type</ion-item-divider>
+    <ion-item>
+        <ion-label color="text">Residential</ion-label>
+        <ion-checkbox [(ngModel)]="residential" ></ion-checkbox>
+    </ion-item>
+    <ion-item>
+        <ion-label color="text">Land</ion-label>
+        <ion-checkbox [(ngModel)]="land"></ion-checkbox>
+    </ion-item>
+
+    <ion-item-divider last color="light">
+        <button ion-button right round color="danger" (click)="resetFilters()">Reset</button>
+        <button ion-button item-end round color="secondary" (click)="applyFilters()">Filter</button>
+    </ion-item-divider>
+
+
+  </ion-list>
+</ion-content>

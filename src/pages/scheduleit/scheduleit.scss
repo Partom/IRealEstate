@@ -1,0 +1,45 @@
+page-scheduleit {
+
+        background: #90dfaa;
+        .image{
+            width: 100%;
+            height: auto;
+
+        }
+
+        .listdisplay{
+            width: 100%;
+
+        }
+        .properties{
+            ion-card-content{
+                ion-card-title{
+                    color: color($colors,text);
+                    font-size: 1.7rem;
+                }
+                p{
+                    font-size: 1rem;
+                }
+            }
+
+        }
+        .date-div{
+
+            background: rgba(144, 224, 170,0.6);
+            padding: 10px 20px;
+            font-weight: bold;
+            color: white;
+            right:0;
+        }
+        .remove-btn{
+            float: right;
+            margin-top : -30px;
+            ion-icon{
+                font-size: 3rem;
+            }
+
+        }
+
+
+
+}

@@ -1,0 +1,44 @@
+<!--
+  Generated template for the FavoritesPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Favorites</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+
+<ion-content id="list">
+    <div class="properties">
+      <ion-card *ngFor="let prop of favproperties" (click)="property(prop)">
+        <!-- {{ prop.mlsPtID }} -->
+        <!-- <ion-img style="width: 100%; height: 170px; object-fit: cover;overflow:hidden" src="{{ prop['image'][0]['url'] }}"></ion-img> -->
+        <img src="{{ prop['image'][0]['url'] }}" alt="">
+        <ion-card-content>
+          <ion-card-title>
+            {{prop.address}}, {{prop['countyName']}}, {{prop['cityName']}}
+            </ion-card-title>
+          <p><b>Price: </b>{{prop['price']}}</p>
+        </ion-card-content>
+        <ion-grid class="bottom-nav">
+          <ion-row no-padding>
+              <ion-col col-4>
+                <ion-label>Area: <span>{{prop['sqFt']}}</span></ion-label>
+              </ion-col>
+              <ion-col text-center col-4>
+                  <ion-label>Type: <span>{{prop['idxPropType']}}</span> </ion-label>
+              </ion-col>
+              <ion-col text-right col-4>
+                <ion-label>Bathrooms: <span>{{prop['totalBaths']}}</span></ion-label>
+              </ion-col>
+        </ion-row>
+      </ion-grid>
+      </ion-card>
+    </div>
+  </ion-content>
