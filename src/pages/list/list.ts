@@ -1,6 +1,5 @@
 
 import { FiltersPage } from './../filters/filters';
-import { HomePage } from './../home/home';
 import { Component , ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController, PopoverController, Events, Content, ToastController } from 'ionic-angular';
 import { PropertyPage } from '../property/property';

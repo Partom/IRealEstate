@@ -12,7 +12,11 @@
 
 </ion-header>
 
-
+<ion-card *ngIf="!haveproperties">
+  <ion-card-header>
+    Nothing to Show
+  </ion-card-header>
+</ion-card>
 
   <ion-content id="list">
       <div class="properties">

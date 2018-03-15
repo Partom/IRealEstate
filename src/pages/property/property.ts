@@ -28,12 +28,16 @@ export class PropertyPage {
     this.prop = navParams.get('prop');
     if (user.isLogin())
     {
+      console.log("property page : userlogin");
       this.propertyInfo = {
         property_id: this.prop['listingID']
-      }
+      };
       this.favorite.check(this.propertyInfo).then((data:any)=>{
+        console.log(data);
 
-        if(JSON.parse(data.data).status == 'true' || data.data[0] != '<')
+        let status =  JSON.parse(data.data);
+        console.log(status);
+        if(status.status == 'true')
         {
           this.isFav = true;
         }

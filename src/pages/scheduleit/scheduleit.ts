@@ -18,6 +18,7 @@ import { PropertyPage } from '../property/property';
 })
 export class ScheduleitPage {
   scheduleproperties:any;
+  haveproperties:boolean = true;
   constructor(public toastCtrl:ToastController,public navCtrl: NavController,public user:User, public loadingCtrl:LoadingController, public scheduler:ScheduleProvider,public navParams: NavParams) {
   }
   ionViewCanEnter(){
@@ -43,12 +44,24 @@ export class ScheduleitPage {
     });
     loading.present();
     this.scheduler.get().then((resp) => {
-    this.scheduleproperties = JSON.parse(resp.data);
+      if(resp.data[0] == '<')
+      {
+        this.getSchedules();
+      }
+      else
+      {
+        this.scheduleproperties = JSON.parse(resp.data);
+        this.scheduleproperties = Array.of(this.scheduleproperties);
+        this.scheduleproperties = this.scheduleproperties[0]['data'];
 
-    this.scheduleproperties = Array.of(this.scheduleproperties);
-    this.scheduleproperties = this.scheduleproperties[0]['data'];
-    console.log(this.scheduleproperties);
-    loading.dismissAll();
+        if (this.scheduleproperties.length === 0) {
+
+          this.haveproperties = false;
+          console.error(this.haveproperties);
+        }
+        console.log(this.scheduleproperties);
+        loading.dismissAll();
+      }
     }, (err) => {
       loading.dismissAll();
       let toast = this.toastCtrl.create({

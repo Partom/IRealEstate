@@ -45,7 +45,7 @@ export class User {
         'X-Requested-With': 'XMLHttpRequest',
         'Content-Type':'multipart/form-data'
        };
-        console.log(this.headers);
+        this.getDetails();
       })
     });
 
@@ -72,6 +72,11 @@ export class User {
       // this.storage.set('refresh_token',this._user.refresh_token);
       // this.storage.set('token_type',this._user.token_type);
         this.events.publish('user:login', true);
+      this.headers = {
+        'Authorization':  this._user.token_type+" "+this._user.access_token,
+        'X-Requested-With': 'XMLHttpRequest',
+        'Content-Type':'multipart/form-data'
+      };
         this.getDetails();
         this._loggedIn(JSON.parse(res.data));
 
@@ -126,6 +131,8 @@ export class User {
 
 
     if(this._user || localStorage.getItem('user') == 'true'){
+
+      this.getDetails();
       return true;
     }
     else {
@@ -137,7 +144,7 @@ export class User {
   //   returns the detail of User
   //
   getDetails(){
-    console.log("Details");
+    console.log(this.headers);
 
     let device_type;
     if (this.plt.is('ios')) {
@@ -147,12 +154,15 @@ export class User {
     else{
       device_type = "android";
     }
-
+    console.log(device_type);
     let seq = this.api.get('details', {device_type: device_type},this.headers);
 
     seq.then((res: any) => {
+      console.log('another check');
+      console.log(res);
       if(res.data[0] != '<')
       {
+        console.log('anothercheck2');
         this.events.publish('user:profile', JSON.parse(res.data));
       }
     }, err => {
@@ -166,7 +176,7 @@ export class User {
     console.log("Refereshing Token");
   }
   updateProfile(user){
-    console.log(this.headers);
+    console.log("updating profile");
     let seq = this.api.post('update/profile', user,this.headers);
 
     seq.then((res: any) => {

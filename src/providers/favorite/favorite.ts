@@ -20,6 +20,7 @@ export class FavoriteProvider {
           'Authorization': this.user.token_type + " " + this.user.access_token,
           'X-Requested-With': 'XMLHttpRequest'
         };
+        console.log(this.headers);
       });
     });
   }

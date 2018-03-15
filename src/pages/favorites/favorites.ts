@@ -1,9 +1,9 @@
-import { MlsProvider } from './../../providers/mls/mls';
+
 import { FavoriteProvider } from './../../providers/favorite/favorite';
 import { User } from './../../providers/user/user';
 import { PropertyPage } from './../property/property';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController, ModalController, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController, ToastController } from 'ionic-angular';
 
 /**
  * Generated class for the FavoritesPage page.
@@ -20,7 +20,9 @@ import { IonicPage, NavController, NavParams, LoadingController, ModalController
 export class FavoritesPage {
 
   favproperties: any;
-  constructor(public toastCtrl:ToastController, public loadingCtrl: LoadingController,public navCtrl: NavController,public mlsProvider:MlsProvider, public navParams: NavParams,public user:User,public favorites:FavoriteProvider) {
+  haveproperties:boolean = true;
+  constructor(public toastCtrl:ToastController, public loadingCtrl: LoadingController,public navCtrl: NavController, public navParams: NavParams,public user:User,public favorites:FavoriteProvider) {
+    this.getFavorites();
   }
   ionViewCanEnter(){
     if(this.user.isLogin()){
@@ -34,7 +36,7 @@ export class FavoritesPage {
   }
 
   ionViewDidLoad() {
-    this.getFavorites();
+
   }
 
   getFavorites(){
@@ -47,11 +49,25 @@ export class FavoritesPage {
     this.favorites.get().then((resp) => {
       loading.dismissAll();
       console.log(resp);
-    this.favproperties = JSON.parse(resp.data);
+      if(resp.data[0] == '<')
+      {
+        this.getFavorites();
+      }
+      else
+      {
+        this.favproperties = JSON.parse(resp.data);
+        this.favproperties = Array.of(this.favproperties);
+        this.favproperties = this.favproperties[0]['data'];
+        if(this.favproperties.length == 0 ){
+          this.haveproperties = false;
+        }
+        console.log(this.favproperties);
+      }
 
-    this.favproperties = Array.of(this.favproperties);
-    this.favproperties = this.favproperties[0]['data'];
-    console.log(this.favproperties);
+
+
+
+
     }, (err) => {
       console.error(err);
       loading.dismissAll();

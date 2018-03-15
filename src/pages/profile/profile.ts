@@ -6,9 +6,7 @@ import {
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import {User} from "../../providers/user/user";
 import { Camera, CameraOptions } from '@ionic-native/camera';
-import { File } from '@ionic-native/file';
-import { Transfer, TransferObject } from '@ionic-native/transfer';
-import { FilePath } from '@ionic-native/file-path';
+
 /**
  * Generated class for the ProfilePage page.
  *
@@ -36,9 +34,6 @@ export class ProfilePage {
     public userservice:User,
     public actionSheetCtrl:ActionSheetController,
     private camera: Camera,
-    private transfer: Transfer,
-    private file: File,
-    private filePath: FilePath,
     public platform: Platform
     ){
     this.user = navParams.get('user');
