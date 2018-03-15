@@ -26,18 +26,13 @@ export class PropertyPage {
   constructor(private alertCtrl: AlertController,public loadingCtrl: LoadingController,public scheduler:ScheduleProvider,public navCtrl: NavController,public storage:Storage, public user:User ,public navParams: NavParams, public toastCtrl: ToastController,public favorite:FavoriteProvider) {
 
     this.prop = navParams.get('prop');
-
-    let loading = this.loadingCtrl.create({
-      showBackdrop: false,
-    });
-    loading.present();
     if (user.isLogin())
     {
       this.propertyInfo = {
         property_id: this.prop['listingID']
       }
       this.favorite.check(this.propertyInfo).then((data:any)=>{
-        loading.dismissAll();
+
         if(JSON.parse(data.data).status == 'true' || data.data[0] != '<')
         {
           this.isFav = true;
@@ -47,7 +42,6 @@ export class PropertyPage {
         }
       },
         (err)=>{
-          loading.dismissAll();
           let toast = this.toastCtrl.create({
             message: JSON.parse(err.error).message ,
             duration: 3000,

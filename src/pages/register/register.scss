@@ -1,42 +1,55 @@
 page-register {
     .login-content {
       background: #56CA96;
-   
+
       .login-box {
         background: rgba(255,255,255,0.4);
-        
+
         margin-top: 30px;
       }
-   
+
       ion-row {
          align-items: center;
          text-align: center;
        }
-   
+
        ion-item {
-           border-radius: 30px !important;
-           padding-left: 30px !important;
+
            font-size: 0.9em;
-           margin-bottom: 10px;
-           border: 1px solid #ffffff;
+           margin-bottom: 15px;
+           border: 0px;
            border-bottom: 0px !important;
            box-shadow: none !important;
        }
-   
+
        .signup-col {
          margin: 0px 16px 0px 16px;
          padding-bottom: 20px;
        }
-   
+
        .item-inner {
-         border-bottom-color: #ffffff !important;
-         box-shadow: none !important;
+
+
+         padding: 0px !important;
        }
-   
+
        .submit-btn {
          background: #51CFB1;
          border-radius: 30px !important;
          border: 1px solid #ffffff;
        }
+
     }
+  .ng-touched{
+    .ng-invalid .ng-dirty{
+
+      border-bottom: 2px solid red;
+
+    }
+    .ng-dirty .ng-valid{
+      border-bottom: 2px solid green;
+    }
+  }
+
+
   }

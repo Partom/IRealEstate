@@ -72,6 +72,7 @@ export class User {
       // this.storage.set('refresh_token',this._user.refresh_token);
       // this.storage.set('token_type',this._user.token_type);
         this.events.publish('user:login', true);
+        this.getDetails();
         this._loggedIn(JSON.parse(res.data));
 
     }, err => {
@@ -108,6 +109,7 @@ export class User {
     this.events.publish('user:login', false);
     this._user = null;
     localStorage.clear();
+    this.events.unsubscribe('user:profile');
   }
 
   /**
@@ -149,7 +151,10 @@ export class User {
     let seq = this.api.get('details', {device_type: device_type},this.headers);
 
     seq.then((res: any) => {
-      // console.log(JSON.parse(res.data));
+      if(res.data[0] != '<')
+      {
+        this.events.publish('user:profile', JSON.parse(res.data));
+      }
     }, err => {
       console.error('ERROR', err);
     });
@@ -166,6 +171,12 @@ export class User {
 
     seq.then((res: any) => {
       console.log('updated');
+      if(res.data[0] != '<')
+      {
+        this.events.publish('user:profile', JSON.parse(res.data));
+      }
+
+
     }, err => {
       console.error('ERROR', err);
     });

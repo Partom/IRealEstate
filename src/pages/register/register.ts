@@ -63,8 +63,7 @@ export class RegisterPage {
       last_name: ['', Validators.compose([ Validators.required])],
       first_name: ['', Validators.compose([ Validators.required])],
       email: ['', Validators.compose([Validators.email, Validators.required])],
-      password: ['', Validators.compose([Validators.minLength(6), Validators.required])],
-      mobile: ['', Validators.compose([Validators.minLength(6), Validators.required])]
+      password: ['', Validators.compose([Validators.minLength(6), Validators.required])]
     });
   }
   ionViewCanEnter(){
@@ -105,16 +104,19 @@ export class RegisterPage {
 
 
   verifyuser(){
+    let contrycode = '+1';
+    let mobilenumber='23748293423';
     let options = {
       useAccessToken: true,
-      defaultCountryCode: "PK",
+      defaultCountryCode: "USA",
       facebookNotificationsEnabled: true,
-      initialPhoneNumber: ["+92", this.account.mobile]
+      initialPhoneNumber: [contrycode, mobilenumber]
     };
     let that = this;
     let success = function(response){
+      that.account.mobile = contrycode+mobilenumber;
       that.doSignup();
-    }
+    };
     let error = function(err){
       console.log(err);
       let toast = that.toastCtrl.create({

@@ -105,6 +105,9 @@ export class MyApp {
         }
 
       });
+    events.subscribe('user:login', (data) => {
+      this.user_detail = data;
+    });
   }
   openPage(page) {
     // Reset the content nav to have just this page

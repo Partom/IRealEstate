@@ -11,13 +11,13 @@ page-profile {
     text-align: center;
     p{
       font-size:1.3rem;
-      color: color($colors,primary);
+      color: color($colors,text);
     }
     ion-input,ion-textarea,ion-select{
       width: 100%;
       border: 2px solid #90dfaa;
       margin-bottom: 7px;
-      color: color($colors, primary);
+      color: black;
       border-radius: 5px;
       padding-left: 5px;
       max-width: 100% !important;
@@ -47,5 +47,15 @@ page-profile {
   .item-inner {
     border-bottom-color: #ffffff !important;
     box-shadow: none !important;
+  }
+  .ng-touched{
+    .ng-invalid .ng-dirty{
+
+      border: 2px solid red;
+
+    }
+    .ng-dirty .ng-valid{
+      border: 2px solid green;
+    }
   }
 }

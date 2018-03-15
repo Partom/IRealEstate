@@ -20,7 +20,7 @@
     <div class="upper-section">
       <img [src]="user.picture!= null ? user.picture : this.defaultimg" alt="" class="profile-cam" (click)="profilepic()" *ngIf="!imgchanged">
       <img [src]="this.defaultimg" alt="" class="profile-cam" (click)="profilepic()" *ngIf=imgchanged>
-      <p>{{ this.user?.first_name }} {{ this.user?.last_name  }}</p>
+      <p>click profile pic to update the profile picture</p>
       <ion-item no-lines>
         <ion-input formControlName="first_name" color="primary" [(ngModel)]="user.first_name"></ion-input>
       </ion-item>
