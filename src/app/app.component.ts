@@ -1,6 +1,6 @@
 
 import { ScheduleitPage } from './../pages/scheduleit/scheduleit';
-
+import { timer } from 'rxjs/observable/timer';
 import { User } from './../providers/user/user';
 import { Storage } from '@ionic/storage';
 import { LoginPage } from './../pages/login/login';
@@ -27,6 +27,7 @@ export class MyApp {
   user:User;
   user_detail:any ={};
   pages: Array<{title: string, component: any}>;
+  showSplash = true;
   constructor(
     platform: Platform,
     events:Events,
@@ -41,7 +42,7 @@ export class MyApp {
       statusBar.styleDefault();
 
       splashScreen.hide();
-      this.getuser();
+      timer(3000).subscribe(() => this.showSplash = false);
     });
 
 
@@ -56,7 +57,7 @@ export class MyApp {
         this.pages.push({ title: 'Favorites' , component: FavoritesPage });
         this.pages.push({ title: 'Schedules' , component: ScheduleitPage });
         this.isLogin = true;
-
+        timer(4000).subscribe(() => this.getuser());
 
       }else{
 
@@ -75,7 +76,8 @@ export class MyApp {
           this.pages.push({ title: 'Schedules' , component: ScheduleitPage });
           this.isLogin = true;
           //getting user details
-          this.getuser();
+
+          timer(3000).subscribe(() => this.getuser());
         }
         else{
           this.pages.pop();

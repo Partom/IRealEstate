@@ -1,5 +1,5 @@
 import { Component , ViewChild, ElementRef } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 
 /**
  * Generated class for the MapitPage page.
@@ -8,7 +8,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
  * Ionic pages and navigation.
  */
 declare var google;
-@IonicPage()
+
 @Component({
   selector: 'page-mapit',
   templateUrl: 'mapit.html',
@@ -25,17 +25,17 @@ export class MapitPage {
     this.loadMap();
   }
   loadMap(){
- 
+
     let latLng = new google.maps.LatLng(this.property['latitude'], this.property['longitude']);
- 
+
     let mapOptions = {
       center: latLng,
       zoom: 14,
       mapTypeId: google.maps.MapTypeId.ROADMAP,
       disableDefaultUI: true,
-      
+
     }
- 
+
     this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
     var newmarker = new google.maps.Marker({
       map:this.map,
@@ -44,11 +44,11 @@ export class MapitPage {
       draggable: false,
       animation: google.maps.Animation.DROP,
       position: {lat: this.property['latitude'], lng: this.property['longitude']},
-      icon: {         
+      icon: {
         url: "./assets/imgs/home/map-nav.png",
-        scaledSize: new google.maps.Size(30, 30)    
+        scaledSize: new google.maps.Size(30, 30)
       }
-  }); 
- 
+  });
+
   }
 }

@@ -1,7 +1,7 @@
 // import { HomePage } from './../home/home';
 import { ListPage } from './../list/list';
 import { Component } from '@angular/core';
-import {AlertController, IonicPage, LoadingController, NavController, NavParams, ToastController} from 'ionic-angular';
+import {AlertController, LoadingController, NavController, NavParams, ToastController} from 'ionic-angular';
 import { User } from './../../providers/user/user';
 import { Firebase } from '@ionic-native/firebase';
 import { Device } from '@ionic-native/device';
@@ -17,7 +17,7 @@ import { Validators, FormBuilder, FormGroup } from '@angular/forms';
  * Ionic pages and navigation.
  */
 declare var AccountKitPlugin:any;
-@IonicPage()
+
 @Component({
   selector: 'page-register',
   templateUrl: 'register.html',
@@ -27,7 +27,8 @@ declare var AccountKitPlugin:any;
 export class RegisterPage {
   // public recaptchaVerifier:firebase.auth.RecaptchaVerifier;
   public verified = false;
-
+  contrycode = '+1';
+  mobilenumber='23748293423';
   account = {
     social_unique_id: '',
     device_type: '',
@@ -104,18 +105,34 @@ export class RegisterPage {
 
 
   verifyuser(){
-    let contrycode = '+1';
-    let mobilenumber='23748293423';
+    AccountKitPlugin.logout();
+     this.contrycode = '1';
+     this.mobilenumber='';
     let options = {
       useAccessToken: true,
       defaultCountryCode: "USA",
       facebookNotificationsEnabled: true,
-      initialPhoneNumber: [contrycode, mobilenumber]
+      initialPhoneNumber: [this.contrycode, this.mobilenumber]
     };
     let that = this;
     let success = function(response){
-      that.account.mobile = contrycode+mobilenumber;
-      that.doSignup();
+      console.log(response);
+      let tempthat = that;
+      AccountKitPlugin.getAccount(function (fbaccount) {
+        tempthat.account.mobile = fbaccount.phoneNumber;
+        tempthat.doSignup();
+      } , function (err) {
+        console.log(err);
+        let toast = tempthat.toastCtrl.create({
+          message: err,
+          duration: 3000,
+          position: 'bottom'
+        });
+        toast.present();
+        return error;
+      } );
+
+
     };
     let error = function(err){
       console.log(err);

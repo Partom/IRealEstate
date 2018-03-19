@@ -54,4 +54,18 @@
 .thumb-img{
   width: 100% !important;
 }
-
+#schedule_date{
+  height: 50px;
+  display: inline-block;
+  width: 70%;
+  margin-left: 15px;
+}
+#schedule-time{
+  height: 50px;
+  display: inline-block;
+  width: 70%;
+  margin-left: 15px;
+}
+.datetime-label{
+  display: inline-block;
+}

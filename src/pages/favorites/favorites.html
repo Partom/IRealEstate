@@ -12,14 +12,16 @@
 
 </ion-header>
 
-<ion-card *ngIf="!haveproperties">
-  <ion-card-header>
-    Nothing to Show
-  </ion-card-header>
-</ion-card>
+
 
 <ion-content id="list">
-    <div class="properties">
+  <ion-card *ngIf=!haveproperties>
+    <ion-card-header color="text" style="text-align: center;">
+      Nothing to show
+    </ion-card-header>
+  </ion-card>
+  <div class="properties">
+
       <ion-card *ngFor="let prop of favproperties" (click)="property(prop)">
         <!-- {{ prop.mlsPtID }} -->
         <!-- <ion-img style="width: 100%; height: 170px; object-fit: cover;overflow:hidden" src="{{ prop['image'][0]['url'] }}"></ion-img> -->

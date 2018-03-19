@@ -15,6 +15,11 @@
     </ion-content>
 
   </ion-menu>
-
+<div *ngIf="showSplash" class="splash">
+  <div class="spinnercustom">
+    <div class="double-bounce1"></div>
+    <div class="double-bounce2"></div>
+  </div>
+</div>
   <!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
   <ion-nav [root]="rootPage" #content ></ion-nav>

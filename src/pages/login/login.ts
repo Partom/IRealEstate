@@ -1,6 +1,6 @@
 import { Storage } from '@ionic/storage';
 import { Component } from '@angular/core';
-import {IonicPage, LoadingController, NavController, NavParams, ToastController} from 'ionic-angular';
+import { LoadingController, NavController, NavParams, ToastController} from 'ionic-angular';
 import { User } from './../../providers/user/user';
 import { RegisterPage } from '../register/register';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
@@ -11,7 +11,7 @@ import { Validators, FormBuilder, FormGroup } from '@angular/forms';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html',

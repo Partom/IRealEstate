@@ -1,7 +1,7 @@
 import { User } from './../../providers/user/user';
 import { ScheduleProvider } from './../../providers/schedule/schedule';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController, ToastController } from 'ionic-angular';
+import { NavController, NavParams, LoadingController, ToastController } from 'ionic-angular';
 import { PropertyPage } from '../property/property';
 
 /**
@@ -11,7 +11,6 @@ import { PropertyPage } from '../property/property';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
 @Component({
   selector: 'page-scheduleit',
   templateUrl: 'scheduleit.html',

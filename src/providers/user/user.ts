@@ -24,6 +24,7 @@ import { Storage } from "@ionic/storage";
  *
  * If the `status` field is not `success`, then an error is detected and returned.
  */
+declare var AccountKitPlugin:any;
 @Injectable()
 export class User {
   _user: any;
@@ -42,10 +43,8 @@ export class User {
         user = data;
         this.headers = {
         'Authorization':  user.token_type+" "+user.access_token,
-        'X-Requested-With': 'XMLHttpRequest',
-        'Content-Type':'multipart/form-data'
+        'X-Requested-With': 'XMLHttpRequest'
        };
-        this.getDetails();
       })
     });
 
@@ -59,7 +58,9 @@ export class User {
    * the user entered on the form.
    */
   login(accountInfo: any) {
-    let seq = this.api.posturl('http://165.227.145.253/oauth/token', accountInfo);
+
+    this._logout();
+    let seq = this.api.posturl('https://irealestateoregon.com/oauth/token', accountInfo);
 
     seq.then((res: any) => {
       // If the API returned a successful response, mark the user as logged in
@@ -67,7 +68,7 @@ export class User {
         console.log(res.data);
         this.storage.set('userdata',this._user);
         // this.storage.set('user','value');
-      localStorage.setItem('user', 'true');
+        localStorage.setItem('user', 'true');
       // this.storage.set('access_token',this._user.access_token);
       // this.storage.set('refresh_token',this._user.refresh_token);
       // this.storage.set('token_type',this._user.token_type);
@@ -115,6 +116,7 @@ export class User {
     this._user = null;
     localStorage.clear();
     this.events.unsubscribe('user:profile');
+
   }
 
   /**

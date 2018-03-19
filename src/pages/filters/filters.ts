@@ -1,6 +1,6 @@
 import { ListPage } from './../list/list';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, Events, ViewController } from 'ionic-angular';
+import { NavController, NavParams, Events, ViewController } from 'ionic-angular';
 
 /**
  * Generated class for the FiltersPage page.
@@ -9,7 +9,7 @@ import { IonicPage, NavController, NavParams, Events, ViewController } from 'ion
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+
 @Component({
   selector: 'page-filters',
   templateUrl: 'filters.html',
@@ -22,6 +22,11 @@ export class FiltersPage {
   residential:boolean;
   land:boolean;
   constructor(public navCtrl: NavController, public viewCtrl:ViewController, public navParams: NavParams, public events:Events) {
+
+  }
+
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad FiltersPage');
     this.events.subscribe('filter:applied', (price,
                                              area,
                                              residential,
@@ -35,13 +40,7 @@ export class FiltersPage {
       this.land = land;
       this.bedroom = bedroom;
       this.bathroom = bathroom;
-
     });
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad FiltersPage');
-
   }
   applyFilters(){
     this.viewCtrl.dismiss();
@@ -54,8 +53,9 @@ export class FiltersPage {
     this.bathroom);
   }
   resetFilters(){
+    this.events.unsubscribe('filter:applied');
+    this.events.publish('filter:reset',true);
     this.viewCtrl.dismiss();
-    this.navCtrl.push(ListPage);
   }
 
 }

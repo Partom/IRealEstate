@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {
- IonicPage, NavParams,NavController, ActionSheetController,
+ NavParams,NavController, ActionSheetController,
   ToastController, Platform, LoadingController, Loading
 } from 'ionic-angular';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
@@ -14,7 +14,7 @@ import { Camera, CameraOptions } from '@ionic-native/camera';
  * Ionic pages and navigation.
  */
 declare var AccountKitPlugin:any;
-@IonicPage()
+
 @Component({
   selector: 'page-profile',
   templateUrl: 'profile.html',

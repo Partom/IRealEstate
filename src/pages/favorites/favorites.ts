@@ -3,7 +3,7 @@ import { FavoriteProvider } from './../../providers/favorite/favorite';
 import { User } from './../../providers/user/user';
 import { PropertyPage } from './../property/property';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController, ToastController } from 'ionic-angular';
+import {  NavController, NavParams, LoadingController, ToastController } from 'ionic-angular';
 
 /**
  * Generated class for the FavoritesPage page.
@@ -12,7 +12,7 @@ import { IonicPage, NavController, NavParams, LoadingController, ToastController
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+
 @Component({
   selector: 'page-favorites',
   templateUrl: 'favorites.html',
@@ -59,6 +59,7 @@ export class FavoritesPage {
         this.favproperties = Array.of(this.favproperties);
         this.favproperties = this.favproperties[0]['data'];
         if(this.favproperties.length == 0 ){
+          console.log(this.favproperties.length);
           this.haveproperties = false;
         }
         console.log(this.favproperties);

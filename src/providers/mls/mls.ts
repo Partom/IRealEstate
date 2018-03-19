@@ -16,7 +16,7 @@ import { HTTP } from '@ionic-native/http';
 export class MlsProvider {
   apiUrl = 'https://api.idxbroker.com';
   headers;
-  offset:number;
+  public offset:number;
   constructor(private http: HTTP) {
     console.log('Hello MlsProvider Provider');
     this.headers=

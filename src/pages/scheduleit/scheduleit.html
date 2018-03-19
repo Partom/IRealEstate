@@ -12,13 +12,15 @@
 
 </ion-header>
 
-<ion-card *ngIf="!haveproperties">
-  <ion-card-header>
-    Nothing to Show
-  </ion-card-header>
-</ion-card>
+
 
   <ion-content id="list">
+
+    <ion-card *ngIf=!haveproperties>
+      <ion-card-header color="text" style="text-align: center;">
+        Nothing to show
+      </ion-card-header>
+    </ion-card>
       <div class="properties">
       <ion-card *ngFor="let prop of scheduleproperties" (click)="property(prop)">
 

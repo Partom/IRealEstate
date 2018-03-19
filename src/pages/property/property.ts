@@ -5,7 +5,12 @@ import { User } from './../../providers/user/user';
 import { FavoriteProvider } from './../../providers/favorite/favorite';
 import { MapitPage } from './../mapit/mapit';
 import { Component } from '@angular/core';
-import {IonicPage, NavController, NavParams, ToastController, AlertController, LoadingController} from 'ionic-angular';
+import {
+  NavController, NavParams, ToastController, AlertController, LoadingController,
+  PopoverController
+} from 'ionic-angular';
+import {FiltersPage} from "../filters/filters";
+import {SchedulePage} from "../schedule/schedule";
 
 /**
  * Generated class for the PropertyPage page.
@@ -14,7 +19,7 @@ import {IonicPage, NavController, NavParams, ToastController, AlertController, L
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+
 @Component({
   selector: 'page-property',
   templateUrl: 'property.html',
@@ -23,7 +28,7 @@ export class PropertyPage {
   isFav:boolean;
   prop:any;
   propertyInfo:any;
-  constructor(private alertCtrl: AlertController,public loadingCtrl: LoadingController,public scheduler:ScheduleProvider,public navCtrl: NavController,public storage:Storage, public user:User ,public navParams: NavParams, public toastCtrl: ToastController,public favorite:FavoriteProvider) {
+  constructor(private popoverCtrl: PopoverController,public loadingCtrl: LoadingController,public scheduler:ScheduleProvider,public navCtrl: NavController,public storage:Storage, public user:User ,public navParams: NavParams, public toastCtrl: ToastController,public favorite:FavoriteProvider) {
 
     this.prop = navParams.get('prop');
     if (user.isLogin())
@@ -128,7 +133,7 @@ export class PropertyPage {
       toast.present();
     });
   }
-  schedule(){
+  schedule(myEvent){
     if (this.user.isLogin()){
       this.scheduler.check({'property_id': this.prop['listingID']})
       .then((data:any)=>{
@@ -142,7 +147,7 @@ export class PropertyPage {
 
         }
         else {
-          this.scheduleit();
+          this.scheduleit(myEvent);
         }
       },(err)=>{
         let toast = this.toastCtrl.create({
@@ -158,66 +163,13 @@ export class PropertyPage {
       this.navCtrl.push(LoginPage);
     }
   }
-  scheduleit(){
-    let alert = this.alertCtrl.create({
-      title: 'Schedule it',
-      message: "Select Date & Time",
-      inputs: [
-        {
+  scheduleit(myEvent){
 
-          name: 'date',
-          value: '10:10:2018',
-          type: 'date',
-          checked: true
-        },
-        {
-          value:'05:30AM',
-          name: 'time',
-          placeholder: 'Time',
-          type: 'Time'
-        }
-      ],
-      buttons: [
-        {
-          text: 'Cancel',
-          role: 'cancel',
-          handler: data => {
-            console.log('Cancel clicked');
-          }
-        },
-        {
-          text: 'Schedule',
-          handler: data => {
-            console.log(data);
-            let schedule = {
-              'property_id': this.prop['listingID'],
-              'schedule_time' : data.time,
-              'schedule_date' : data.date
-            };
 
-              if(data.time && data.date){
-                this.scheduler.add(schedule).then((resp) => {
-                  let toast = this.toastCtrl.create({
-                    message: "Property Scheduled",
-                    duration: 3000,
-                    position: 'bottom'
-                  });
-                  toast.present();
+      let popover = this.popoverCtrl.create(SchedulePage,{"property_id": this.prop['listingID']},{cssClass:'filter-popup'});
+      popover.present({
+        ev: myEvent
+      });
 
-                }, (err) => {
-
-                  let toast = this.toastCtrl.create({
-                    message: JSON.parse(err.error).message,
-                    duration: 3000,
-                    position: 'top'
-                  });
-                  toast.present();
-                });
-              }
-          }
-        }
-      ]
-    });
-    alert.present();
   }
 }

@@ -3,7 +3,10 @@
     <button ion-button menuToggle>
         <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Home</ion-title>
+    <ion-searchbar (ionInput)="search($event.target.value)" debounce='1000' ></ion-searchbar>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="presentFilters($event)" ><ion-icon name="md-funnel"></ion-icon></button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 <ion-content>

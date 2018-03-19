@@ -1,7 +1,7 @@
 
 import { FiltersPage } from './../filters/filters';
 import { Component , ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController, PopoverController, Events, Content, ToastController } from 'ionic-angular';
+import {  NavController, NavParams, LoadingController, PopoverController, Events, Content, ToastController } from 'ionic-angular';
 import { PropertyPage } from '../property/property';
 import { MlsProvider } from './../../providers/mls/mls';
 
@@ -12,7 +12,7 @@ import { MlsProvider } from './../../providers/mls/mls';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+
 @Component({
   selector: 'page-list',
   templateUrl: 'list.html',
@@ -48,6 +48,14 @@ export class ListPage {
 
       this.properties= this.filteredProperties;
 
+    });
+    this.events.subscribe('filter:reset',(value)=>{
+      if(value){
+        this.mlsProvider.offset = 0;
+        this.filtered = false;
+        this.properties = this.allProperties;
+        this.events.publish('filter:reset',false);
+      }
     });
   }
   ionViewDidLoad() {
@@ -220,7 +228,10 @@ export class ListPage {
                   item['countyName'].toLowerCase().indexOf(val.toLowerCase()) > -1;
          });
       }else{
+        this.mlsProvider.offset = 0;
+        this.filtered = false;
         this.properties = this.allProperties;
+        this.events.publish('filter:reset',false);
       }
 
       this.properties = this.filteredProperties;
