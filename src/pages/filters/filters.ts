@@ -16,7 +16,7 @@ import { NavController, NavParams, Events, ViewController } from 'ionic-angular'
 })
 export class FiltersPage {
   price:any = { lower: 0, upper: 49500000 };
-  area:any = { lower: 0 , upper: 520 };
+  area:any = { lower: 100 , upper: 5000 };
   bedroom:any;
   bathroom : any;
   residential:boolean;
@@ -43,6 +43,9 @@ export class FiltersPage {
     });
   }
   applyFilters(){
+    this.area.upper = this.area.upper / 43560;
+    this.area.lower = this.area.lower / 43560;
+    console.log(this.area);
     this.viewCtrl.dismiss();
     this.events.publish('filter:applied',
     this.price,
@@ -56,6 +59,67 @@ export class FiltersPage {
     this.events.unsubscribe('filter:applied');
     this.events.publish('filter:reset',true);
     this.viewCtrl.dismiss();
+  }
+  add(element){
+    console.log("add click for " + element);
+    if(element == "pu")
+    {
+      this.price.upper++;
+    }
+    if(element == "pl")
+    {
+      this.price.lower++;
+    }
+    if(element == "au")
+    {
+      this.area.upper++;
+    }
+    if(element == "al")
+    {
+      this.area.lower++;
+    }
+
+  }
+  minus(element)
+  {
+    console.log("Minus click for " + element);
+    if(element == "pu")
+    {
+      if(this.price.upper <= 0){
+        this.price.upper = 0;
+      }
+      else{
+        this.price.upper--;
+      }
+    }
+    if(element == "pl")
+    {
+      if(this.price.lower <= 0){
+        this.price.lower = 0;
+      }
+      else{
+        this.price.lower--;
+      }
+    }
+    if(element == "au")
+    {
+      if(this.area.upper <= 0){
+        this.area.upper = 0;
+      }
+      else{
+        this.area.upper--;
+      }
+    }
+    if(element == "al")
+    {
+      if(this.area.lower <= 0){
+        this.area.lower = 0;
+      }
+      else{
+        this.area.lower--;
+      }
+    }
+
   }
 
 }

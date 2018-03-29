@@ -8,16 +8,47 @@
 </ion-header> -->
 <ion-content>
   <ion-list no-lines>
-      <ion-item-divider color="light">Price</ion-item-divider>
+    <ion-item-divider color="light">Min Price</ion-item-divider>
     <ion-item>
-      <ion-range dualKnobs="true" pin="true" min='0' max='49500000' [(ngModel)]="price" color="text">
-      </ion-range>
+      <button ion-button icon-only clear item-left (click) = "minus('pl')">
+        <ion-icon name="remove" color="text"></ion-icon>
+      </button>
+      <ion-input type="number" placeholder="Min Price" [(ngModel)]="price.lower"></ion-input>
+      <button ion-button icon-only clear item-right (click) = "add('pl')">
+        <ion-icon name="add" color="text"></ion-icon>
+      </button>
     </ion-item>
-    <ion-item-divider color="light">Area</ion-item-divider>
+      <ion-item-divider color="light">Max Price</ion-item-divider>
+      <ion-item>
+        <button ion-button icon-only clear item-left (click) ="minus('pu')">
+          <ion-icon name="remove" color="text"></ion-icon>
+        </button>
+        <ion-input type="number" placeholder="Max Price" [(ngModel)]="price.upper"></ion-input>
+        <button ion-button icon-only item-right clear (click) = "add('pu')">
+          <ion-icon name="add" color="text"></ion-icon>
+        </button>
+      </ion-item>
+    <ion-item-divider color="light">Min Area (in SqFt)</ion-item-divider>
     <ion-item>
-        <ion-range dualKnobs="true" pin="true" min='0' max='520' [(ngModel)]="area" color="text" debounce='700'>
-          </ion-range>
+      <button ion-button icon-only clear item-left (click) = "minus('al')">
+        <ion-icon name="remove" color="text"></ion-icon>
+      </button>
+      <ion-input type="number" placeholder="Min Area" [(ngModel)]="area.lower"></ion-input>
+      <button ion-button icon-only clear item-right (click) = "add('al')">
+        <ion-icon name="add" color="text"></ion-icon>
+      </button>
     </ion-item>
+    <ion-item-divider color="light">Max Area (in SqFt)</ion-item-divider>
+    <ion-item>
+      <button ion-button icon-only clear item-left (click) ="minus('au')">
+        <ion-icon name="remove" color="text"></ion-icon>
+      </button>
+      <ion-input type="number" placeholder="Max Area" [(ngModel)]="area.upper"></ion-input>
+      <button ion-button icon-only item-right clear (click) = "add('au')">
+        <ion-icon name="add" color="text" ></ion-icon>
+      </button>
+    </ion-item>
+
     <ion-item>
         <ion-label color="text">Bedrooms</ion-label>
         <ion-input type="number" [(ngModel)]="bedroom" placeholder="1" ></ion-input>

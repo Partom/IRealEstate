@@ -34,7 +34,7 @@ export class HomePage {
       this.filterProperties(price,area,residential,land,bedroom,bathroom);
       console.log(this.filteredProperties);
       this.properties= this.filteredProperties;
-      this.loadMap();
+      this.loadMap(this.filteredProperties[0]);
       this.addMarkersToMap(this.filteredProperties);
     });
     this.events.subscribe('filter:reset',(value)=>{
@@ -122,20 +122,26 @@ export class HomePage {
           item['cityName'].toLowerCase().indexOf(val.toLowerCase()) > -1 ||
           item['countyName'].toLowerCase().indexOf(val.toLowerCase()) > -1;
       });
-      this.loadMap();
+      this.loadMap(this.filteredProperties[0]);
       this.addMarkersToMap(this.filteredProperties);
     }else{
       this.properties = this.allProperties;
       this.inializemappage();
     }
   }
-  loadMap(){
-
-    let latLng = new google.maps.LatLng(45.3276917,-123.1745789);
-
+  loadMap(property?:any){
+    let latLng;
+    let zoom = 10;
+    if(property){
+     latLng = new google.maps.LatLng(property['latitude'],property['longitude']);
+     zoom = 12;
+    }
+    else {
+      latLng = new google.maps.LatLng(45.3276917,-123.1745789);
+    }
     let mapOptions = {
       center: latLng,
-      zoom: 10,
+      zoom: zoom,
       mapTypeId: google.maps.MapTypeId.ROADMAP,
       disableDefaultUI: true,
 

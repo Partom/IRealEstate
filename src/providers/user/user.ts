@@ -60,7 +60,7 @@ export class User {
   login(accountInfo: any) {
 
     this._logout();
-    let seq = this.api.posturl('https://irealestateoregon.com/oauth/token', accountInfo);
+    let seq = this.api.posturl('https://api.irealestateoregon.com/oauth/token', accountInfo);
 
     seq.then((res: any) => {
       // If the API returned a successful response, mark the user as logged in

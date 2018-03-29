@@ -54,6 +54,7 @@ export class ListPage {
         this.mlsProvider.offset = 0;
         this.filtered = false;
         this.properties = this.allProperties;
+        this.content.scrollToTop();
         this.events.publish('filter:reset',false);
       }
     });

@@ -1,3 +1,13 @@
 page-filters {
-
+  ion-item {
+    border: 0px;
+    border-bottom: 0px !important;
+    box-shadow: none !important;
+  }
+  .item-inner,
+  .item-md.item-input.ng-valid.item-input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner, .item-md.item-input.ng-valid.input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner{
+    border-bottom: 0px !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+  }
 }

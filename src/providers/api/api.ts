@@ -8,7 +8,7 @@ import { HTTP } from '@ionic-native/http';
  */
 @Injectable()
 export class Api {
-  url: string = 'https://irealestateoregon.com/api/user';
+  url: string = 'https://api.irealestateoregon.com/api/user';
 
   constructor(private http: HTTP) {
   }
